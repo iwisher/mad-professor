@@ -5,8 +5,9 @@ from openai import OpenAI
 from langchain_huggingface import HuggingFaceEmbeddings
 
 # API配置
-API_BASE_URL = "YOUR_API_URL"
-API_KEY = "YOUR_API_KEY"
+API_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai/"
+API_KEY = "AIzaSyBSzxuFvTxxNAMbtdQZyzGva2a_yo4OBi8"
+GEMINI_MODEL = "gemini-2.5-flash-preview-04-17"
 
 TTS_GROUP_ID = "YOUR_MINIMAX_GROUP_ID"
 TTS_API_KEY = "YOUR_MINIMAX_API_KEY"
@@ -73,7 +74,7 @@ class LLMClient:
         """
         try:
             response = self.client.chat.completions.create(
-                model="deepseek-v3-250324",
+                model= GEMINI_MODEL or "deepseek-v3-250324",
                 messages=messages,
                 temperature=temperature,
                 stream=stream
@@ -110,7 +111,7 @@ class LLMClient:
         """
         try:
             response = self.client.chat.completions.create(
-                model="deepseek-v3-250324",
+                model= GEMINI_MODEL or "deepseek-v3-250324",
                 messages=messages,
                 temperature=temperature,
                 stream=True
